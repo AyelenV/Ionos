@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>Proyecto Ionos: Fichero Fuente ionodat.py</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto Ionos
+   </div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('test_2ionodat_8py_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Funciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">test/ionodat.py</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">#!/usr/bin/env python</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"># -*- coding: utf-8 -*-</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> numpy <span class="keyword">as</span> np</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> sys</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">#--------- my modules --------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> takefiles</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">class </span>Ionodat(object) :</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">    Define Clase del objeto dato ionoferico, a partir de los calculos obtenidos con el modelo ionosferico LPIM.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">def </span>__init__(self, path_source, file_type, var_name):</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;         self.source = path_source <span class="comment"># Ubicacion de los archivos salida del LPIM (LPIM-database)</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;         self.file_type = file_type <span class="comment">#str: tipo de archivo salida del LPIM.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;         self.name = var_name  <span class="comment"># str: nombre del parametro (variable) ionoferica</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classionodat_1_1Ionodat.html#aeaff51ff27759206f8f3baeb8fa00228">   20</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classionodat_1_1Ionodat.html#aeaff51ff27759206f8f3baeb8fa00228">get</a>(self, fecha_inicial, fecha_final):</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">        Extrae set de datos relacionados con parametro ionoferico deseado de LPIM database.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">        Chequea si hay datos disponibles en LPIM database, para las fechas solicitadas por usuario.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"># Crea listas con los intervalos de tienpo, años, meses, dias, solicitados por usuario.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="comment"># Lista-año, para intervalo de fechas solicitado</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        yran = range(int(fecha_inicial.strftime(<span class="stringliteral">&quot;%Y&quot;</span>)),int(fecha_final.strftime(<span class="stringliteral">&quot;%Y&quot;</span>))+1)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        yearl = [str(x) <span class="keywordflow">for</span> x <span class="keywordflow">in</span> yran]</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="comment"># Si se solicita un solo año, hace unica lista-mes</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span> len(yran) == 1 :</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            mran = range(int(fecha_inicial.strftime(<span class="stringliteral">&quot;%m&quot;</span>)),int(fecha_final.strftime(<span class="stringliteral">&quot;%m&quot;</span>))+1)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            months = [str(x).zfill(2) <span class="keywordflow">for</span> x <span class="keywordflow">in</span> mran]</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            monl = [months]</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment"># Para varios años, hace una lista-mes por cada año</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">else</span> :</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            monl = []</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">for</span> year <span class="keywordflow">in</span> yearl :</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                months = [<span class="stringliteral">&#39;*&#39;</span>]</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">if</span> year == fecha_inicial.strftime(<span class="stringliteral">&quot;%Y&quot;</span>) :</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    mran = range(int(fecha_inicial.strftime(<span class="stringliteral">&quot;%m&quot;</span>)),12+1)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    months = [str(x).zfill(2) <span class="keywordflow">for</span> x <span class="keywordflow">in</span> mran]</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordflow">if</span> year == fecha_final.strftime(<span class="stringliteral">&quot;%Y&quot;</span>) :</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    mran = range(1,int(fecha_final.strftime(<span class="stringliteral">&quot;%m&quot;</span>))+1)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    months = [str(x).zfill(2) <span class="keywordflow">for</span> x <span class="keywordflow">in</span> mran]</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                monl.append(months)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        doyl = [<span class="stringliteral">&#39;*&#39;</span>]</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment"># si se solicita un unico año y unico mes, crea lista de dias (doys).</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> len(yran) == len(mran) == 1 :</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            dran = range(int(fecha_inicial.strftime(<span class="stringliteral">&quot;%j&quot;</span>)),int(fecha_final.strftime(<span class="stringliteral">&quot;%j&quot;</span>))+1)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            doyl = [str(x).zfill(3) <span class="keywordflow">for</span> x <span class="keywordflow">in</span> dran]</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;Lista de Datos solicitado por usuario&#39;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">print</span> yearl, monl, doyl</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;  &#39;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"># Para  rango de fechas solicitado, lista archivos disponibles en LPIM databe</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        procesar = takefiles.LPIMdatbase (self.<a class="code" href="classionodat_1_1Ionodat.html#a392428789a0aa99875841b4634f2937c">source</a>, self.<a class="code" href="classionodat_1_1Ionodat.html#a1405e3621cecef170f2c81d511214b31">file_type</a>, yearl, monl, doyl)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;Total prm files&#39;</span>, len(procesar)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"># EXtrae las variable ionos solicitada, segun tipo de archivo correspondiente, en LPIM databse.</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classionodat_1_1Ionodat.html#a1405e3621cecef170f2c81d511214b31">file_type</a> == <span class="stringliteral">&#39;prm&#39;</span> :</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="comment"># Correspondencia entre nro de columna y variable, en archivo tipo ~prm de LPIM databse.</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            columnas = {<span class="stringliteral">&#39;NmF2&#39;</span>: (6,7), <span class="stringliteral">&#39;hmF2&#39;</span>: (10,11), <span class="stringliteral">&#39;HF2&#39;</span>: (14,15)} <span class="comment"># LPIM(ccir),LPIM(cosmic),ObsCOSMIC</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="comment"># Segun variable deseada, seran las columnas extraidas</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">if</span> self.<a class="code" href="classionodat_1_1Ionodat.html#a5c15d042c4688485cb53c27e9a0afd1d">name</a> <span class="keywordflow">in</span> columnas :</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                col = columnas[self.<a class="code" href="classionodat_1_1Ionodat.html#a5c15d042c4688485cb53c27e9a0afd1d">name</a>]</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">else</span> :</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">print</span> <span class="stringliteral">&#39;No existe variable solicitada en salida tipo ~prm&#39;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                sys.exit()</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            dia = []</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            abcisa=[]</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            ordenada=[]</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            par0=[]</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            parc=[]</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">for</span> prmf <span class="keywordflow">in</span> procesar :</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="comment"># Leo archivo de datos</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                modip, LT = np.loadtxt(prmf, comments = <span class="stringliteral">&#39;%&#39;</span>, unpack = <span class="keyword">True</span>, usecols = (3, 5))</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                c0, cc = np.loadtxt(prmf, comments = <span class="stringliteral">&#39;%&#39;</span>, unpack = <span class="keyword">True</span>, usecols = col)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="comment"># modip:  latitud modip del valor observado</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="comment"># LT_Mob : local time del valor observado (Cosmic)</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="comment"># c0 : valor calculado LPIM (modo autonomo)</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="comment"># cc: valor calculado LPIM + asimilación de datos</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="comment"># Extraigo doy number de file name</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                doy = prmf[-8:-5]</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="comment"># construyo vector de string doy repetido la cantidad de observaciones en el prmf.</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                doy_vect = [int(doy)]*len(modip)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                dia.append(doy_vect)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                abcisa.append(LT)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                ordenada.append(modip)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                par0.append(c0)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                parc.append(cc)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            doy = np.concatenate(dia)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            LT = np.concatenate(abcisa)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            modip = np.concatenate(ordenada)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            c0 = np.concatenate(par0)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            cc = np.concatenate(parc)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;cantidad de rops a plotear:&#39;</span>, len(c0)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="comment"># print NmF2c0.max(), NmF2c0.min()</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="comment"># print doy[:5], LT[:5], modip[:5], c0[:5], cc[:5]</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">else</span>: <span class="keywordflow">print</span> <span class="stringliteral">&#39;[ionodat.Ionodat.get] No existe ese tipo de archivo en LPIM database&#39;</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">return</span> doy, LT, modip, c0, cc</div>
+<div class="ttc" id="classionodat_1_1Ionodat_html_a392428789a0aa99875841b4634f2937c"><div class="ttname"><a href="classionodat_1_1Ionodat.html#a392428789a0aa99875841b4634f2937c">ionodat.Ionodat.source</a></div><div class="ttdeci">source</div><div class="ttdef"><b>Definition:</b> <a href="ionodat_8py_source.html#l00015">ionodat.py:15</a></div></div>
+<div class="ttc" id="classionodat_1_1Ionodat_html_aeaff51ff27759206f8f3baeb8fa00228"><div class="ttname"><a href="classionodat_1_1Ionodat.html#aeaff51ff27759206f8f3baeb8fa00228">ionodat.Ionodat.get</a></div><div class="ttdeci">def get</div><div class="ttdef"><b>Definition:</b> <a href="ionodat_8py_source.html#l00020">ionodat.py:20</a></div></div>
+<div class="ttc" id="classionodat_1_1Ionodat_html_a5c15d042c4688485cb53c27e9a0afd1d"><div class="ttname"><a href="classionodat_1_1Ionodat.html#a5c15d042c4688485cb53c27e9a0afd1d">ionodat.Ionodat.name</a></div><div class="ttdeci">name</div><div class="ttdef"><b>Definition:</b> <a href="ionodat_8py_source.html#l00017">ionodat.py:17</a></div></div>
+<div class="ttc" id="classionodat_1_1Ionodat_html_a1405e3621cecef170f2c81d511214b31"><div class="ttname"><a href="classionodat_1_1Ionodat.html#a1405e3621cecef170f2c81d511214b31">ionodat.Ionodat.file_type</a></div><div class="ttdeci">file_type</div><div class="ttdef"><b>Definition:</b> <a href="ionodat_8py_source.html#l00016">ionodat.py:16</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><b>ionodat.py</b></li>
+    <li class="footer">Generado el Miércoles, 21 de Diciembre de 2016 15:27:49 para Proyecto Ionos por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
+  </ul>
+</div>
+</body>
+</html>
